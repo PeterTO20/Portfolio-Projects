@@ -3,7 +3,7 @@
 
 
 
-### –ask–
+## –ask–
 
 
 
@@ -17,7 +17,7 @@ You are a junior data analyst working in the marketing analyst team at Cyclistic
 The problem is to convert casual riders to annual members by finding out how annual members and casual riders use our bikes differently. This insight will assist our stakeholders on a marketing campaign to increase annual members.
 
 
-TASK
+### TASK
 
 How do annual members and casual riders use Cyclistic bikes differently?
 
@@ -25,11 +25,11 @@ How do annual members and casual riders use Cyclistic bikes differently?
 
 
 
-–prepare–
+## –prepare–
 
 
 
-ABOUT THE DATA
+### ABOUT THE DATA
 
 The data was taken from the company’s website which is a public database of  historical trip data that is available to use for analysis. The data represents every trip taken from November 1, 2020 to October 31, 2021. The data is organized into 12 monthly CSV files which represent the most recent data available. Each dataset has a consistent header name across 13 columns, which includes a ride_id column that is unique. 
 
@@ -38,7 +38,7 @@ This data helps us answer our question by identifying casual riders and members 
 Data License Agreement and datasets used can be found here.
 
 
-DATA LIMITATIONS
+### DATA LIMITATIONS
 
 Data-privacy issues prohibit us from using riders’ personally identifiable information. This means that we won’t be able to connect pass purchases to credit card numbers to determine if casual riders live in the Cyclistic service area or if they have purchased multiple single passes.
 
@@ -46,16 +46,16 @@ Data-privacy issues prohibit us from using riders’ personally identifiable inf
 
 
 
-–process–
+## –process–
 
 
 
-TOOLS USED
+### TOOLS USED
 
 We will be using PostgreSQL to prepare and clean the data due to the large amount of data involved, and we’ll also be using Tableau for the data visualization portion to showcase our results.
 
 
-PROBLEMS WITH THE DATA
+### PROBLEMS WITH THE DATA
 
 There are duplicates found in the data, especially in the ride_id column, which should be a unique column. 
 There are NULLs throughout the station names, station ids, and latitude/longitude columns.
@@ -67,7 +67,7 @@ Trips over 24hours are considered lost or stolen; More information here.
 There are trip durations with negative values. This may suggest that the data collected may have been mixed when inputted into  the started_at and ended_at column.
 
 
-SOLUTIONS TO THE PROBLEM – CLEANING THE DATA
+### SOLUTIONS TO THE PROBLEM – CLEANING THE DATA
 
 These problems have been filtered out and have been inserted into a new table for accurate and consistent queries. The number of rows went from 5,378,834 to 4,432,917 during this process; about 18% of the data. After filtering out the data we still have enough data to use for a thorough analysis. The data type for the station IDs have been inputted as VARCHAR so the data can be queried. We also used TRIM to remove any blank spaces in our data.
 
@@ -82,7 +82,7 @@ end_lng (4,830 nulls),
 trip_duration [under 60sec and over 24hrs] (85,757 nulls).
 
 
-VERIFICATION OF CLEAN DATA 
+### VERIFICATION OF CLEAN DATA 
 
 We ensured the clean data is verified by conducting queries to check that all the problems are removed; Duplicates, NULLs, station name outliers, invalid trip_durations. 
 
@@ -90,11 +90,11 @@ We ensured the clean data is verified by conducting queries to check that all th
 
 
 
-–analize–
+## –analize–
 
 
 
-Overall Trip Count:
+### Overall Trip Count:
 
 Over the past year, we can see that the total trips made by members and casual riders are almost even between the two types of ridership
 Members making ~2.4 million trips (55%)
@@ -103,7 +103,7 @@ Casual riders making ~2.0 million trips (45%)
 This suggests to us that there is opportunity to convert casual riders into annual members based on the volume of trips.
 
 
-Month Trip Count:
+### Month Trip Count:
 
 From a monthly perspective, we identified that trips made by casual riders and members peak in the summer months between June and August:
 There are more trips by casual riders than members in July (Casual = 365k, Members = 317k).
@@ -114,7 +114,7 @@ There are significantly less casual riders than members in the fall, winter, and
 This suggests that the more trips are made during warmer months and the best time to target casual riders is in the months where the ridership is highest, which is in the summer months of June, July, and August.
 
 
-Day of the Week Trip Count:
+### Day of the Week Trip Count:
 
 From a weekly perspective, we identified:
 Casual riders have significantly more trips on the weekend compared to the weekday 
@@ -125,7 +125,7 @@ Members make up majority of the weekday trips
 This shows us that members are using our bikes consistently during the weekday while a vast majority of casual riders use our bikes on the weekend. This suggests that the best time to target casual riders are on the weekends.
 
 
-Hour Started Trip Count:
+### Hour Started Trip Count:
 
 From an hourly perspective, we identified:
 Members are far more likely to take trips during morning rush hour (5am - 8am) than casual riders
@@ -137,7 +137,7 @@ Majority of trips made by members (100k+) are from 7am to 7pm
 This shows us that members are using our bikes more throughout the day and suggests that the best time to target casual riders is from 11am to 7pm, when the majority of casual riders are using our bikes.
 
 
-Average Trip Duration (Minutes) per Day of the Week:
+### Average Trip Duration (Minutes) per Day of the Week:
 
 This perspective shows that everyday of the week, on average, casual riders have longer trip durations than members. Additionally, we want to pinpoint that on weekends casual riders have significantly higher trip duration than compared to weekdays:
 Saturday: 15min for members vs. 31min for casuals
@@ -148,14 +148,14 @@ Even though we see members have their highest trip duration on the weekend at 15
 This suggests that everyday during the week, on average, casual riders spend more time on our bikes per trip than members. Even though members have more trips by volume, casual riders spend more time on our bikes per trip. This can be because casual riders use our bikes more for recreational purposes and members use it primarily for short-distance commutes.
 
 
-Rideable Type Trip Count:
+### Rideable Type Trip Count:
 
 This perspective clearly shows that the most common rideable type among both members and casual riders is the classic bike.
 
 This suggests that classic bikes are the best option for both members and casual riders.
 
 
-Top Stations Used:
+### Top Stations Used:
 
 Based on the map visualization, we observed that:
 
@@ -174,7 +174,7 @@ Clark St. & Elm St. (start trips = 23k, end trips = 23k), and
 Wells St. & Concord Ln (start trips  = 22k, end trips  = 22k) 
 
 
-Conclusion:
+### Conclusion:
 
 How do annual members and casual riders use Cyclistic bikes differently?
 
@@ -196,20 +196,20 @@ Members are shown to have more routine in consistent trips. This is likely commu
 
 
 
-–share–
+## –share–
 
 
-On tableau here.
-
-
-
-
-
-–recommendations–
+On tableau [here.(https://public.tableau.com/app/profile/peter.masternak/viz/CyclisticProject_16386624951690/Front)]
 
 
 
-Top Recommendations:
+
+
+## –recommendations–
+
+
+
+### Top Recommendations:
 
 Promote Lifestyle — There are lots of benefits for using our bikes, which includes health, environmental, financial, and benefits dealing with less traffic. In conjunction with these benefits, we can show riders many ways to use our bikes that aren't only recreational, but also for commuting to and from work, the gym, grocery store, a friend's house, and much more. It’s a lifestyle. We can use all this to our advantage within our campaign and make riders feel good about being members. We should market along the coast of Lake Michigan during the summer months and weekends, targeting when and where most of the casual riders are taking trips.
 
