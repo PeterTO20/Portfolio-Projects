@@ -13,6 +13,8 @@
 - For the purpose of this case study, only 1 year of the most recent data at the time was used.
 - This case study consists of 12 monthly datasets which represents a year of data from 2020-11-01 to 2021-10-31.
 - For this case study PostfreSQL was used to clean the data and Tableau was used for data viz.
+- The SQL queries for this case study can be found [here.](https://github.com/PeterTO20/Portfolio-Projects/blob/Cyclistic-Case-Study-SQL-Queries/Cyclistic%20SQL%20Queries)
+- The Tableau for this case study can be found [here.](https://public.tableau.com/app/profile/peter.masternak/viz/CyclisticProject_16386624951690/Front)
 
 
 &nbsp;
