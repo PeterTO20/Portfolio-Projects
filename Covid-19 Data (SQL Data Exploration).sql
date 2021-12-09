@@ -4,8 +4,6 @@ Covid19 Data Exploration
 Skills used: JOINs, CTE, Temp Tables, Window Functions, Aggregate Functions, Creating Views, Converting Data Types
 
 NOTE: The date in this data is from 2020-01-01 to 2021-11-18
-
-Tableau dashboard can be found at: https://public.tableau.com/app/profile/peter.masternak/viz/Portfolio_Project_Covid_1/Dashboard1
 */
 
 -- Data that we are going to be using
