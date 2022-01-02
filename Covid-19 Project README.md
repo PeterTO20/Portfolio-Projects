@@ -10,7 +10,7 @@
  
  ## SQL Queries
  
- - You may find the complete SQL queries [here.}(https://github.com/PeterTO20/Portfolio-Projects/blob/Covid-19-Project-SQL-Queries/Covid-19%20SQL%20Queries)
+ - You may find the complete SQL queries [here.](https://github.com/PeterTO20/Portfolio-Projects/blob/Covid-19-Project-SQL-Queries/Covid-19%20SQL%20Queries)
  
   &nbsp;
   
