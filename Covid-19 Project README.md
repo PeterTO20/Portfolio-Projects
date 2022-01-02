@@ -10,10 +10,10 @@
  
  ## SQL Queries
  
- - You may find the complete SQL queries [here.}(
+ - You may find the complete SQL queries [here.}(https://github.com/PeterTO20/Portfolio-Projects/blob/Covid-19-Project-SQL-Queries/Covid-19%20SQL%20Queries)
  
   &nbsp;
   
  ## Tableau
  
- - You may find the Tableau dashboard [here.](
+ - You may find the Tableau dashboard [here.](https://public.tableau.com/app/profile/peter.masternak/viz/Portfolio_Project_Covid_1/Dashboard1)
