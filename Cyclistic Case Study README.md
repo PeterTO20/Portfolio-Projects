@@ -14,7 +14,7 @@
 - This case study consists of 12 monthly datasets which represents a year of data from 2020-11-01 to 2021-10-31.
 - For this case study PostfreSQL was used to clean the data and Tableau was used for data viz.
 - Find the SQL queries [here.](https://github.com/PeterTO20/Portfolio-Projects/blob/Cyclistic-Case-Study-SQL-Queries/Cyclistic%20SQL%20Queries)
-- Find the Tableau dashboard [here.](https://public.tableau.com/app/profile/peter.masternak/viz/CyclisticProject_16386624951690/CyclisticCaseStudy)
+- Find the Tableau visualization [here.](https://public.tableau.com/app/profile/peter.masternak/viz/CyclisticProject_16386624951690/CyclisticCaseStudy)
 
 
 &nbsp;
@@ -254,7 +254,7 @@ How do annual members and casual riders use Cyclistic bikes differently?
 
 &nbsp;
 
-Take a look at my Tableau dashbaordn [here.](https://public.tableau.com/app/profile/peter.masternak/viz/CyclisticProject_16386624951690/CyclisticCaseStudy)
+Take a look at my Tableau visualization [here.](https://public.tableau.com/app/profile/peter.masternak/viz/CyclisticProject_16386624951690/CyclisticCaseStudy)
 
 
 &nbsp;
