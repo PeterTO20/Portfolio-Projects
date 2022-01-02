@@ -254,7 +254,7 @@ How do annual members and casual riders use Cyclistic bikes differently?
 
 &nbsp;
 
-Take a look at my Tableau dashbaordn [here.](https://public.tableau.com/app/profile/peter.masternak/viz/CyclisticProject_16386624951690/Front)
+Take a look at my Tableau dashbaordn [here.](https://public.tableau.com/app/profile/peter.masternak/viz/CyclisticProject_16386624951690/CyclisticCaseStudy)
 
 
 &nbsp;
