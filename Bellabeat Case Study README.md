@@ -9,7 +9,7 @@ output:
 ---  
 
 
-![s](https://womensfitnessclubs.com/richmond-hill/wp-content/uploads/sites/6/2021/08/shutterstock_1197796711_1000x800.jpg)
+![s](https://cdn.muscleandstrength.com/sites/default/files/3_day_toning_workout_-_1200x630.jpg)
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
