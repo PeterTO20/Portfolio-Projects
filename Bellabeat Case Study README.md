@@ -86,12 +86,58 @@ Check column headers and data structure:
 ```{r Check, message=FALSE}
 # Activity
 str(Activity)
+
+## 'data.frame':    940 obs. of  15 variables:
+##  $ Id                      : num  1.5e+09 1.5e+09 1.5e+09 1.5e+09 1.5e+09 ...
+##  $ ActivityDate            : chr  "4/12/2016" "4/13/2016" "4/14/2016" "4/15/2016" ...
+##  $ TotalSteps              : int  13162 10735 10460 9762 12669 9705 13019 15506 10544 9819 ...
+##  $ TotalDistance           : num  8.5 6.97 6.74 6.28 8.16 ...
+##  $ TrackerDistance         : num  8.5 6.97 6.74 6.28 8.16 ...
+##  $ LoggedActivitiesDistance: num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ VeryActiveDistance      : num  1.88 1.57 2.44 2.14 2.71 ...
+##  $ ModeratelyActiveDistance: num  0.55 0.69 0.4 1.26 0.41 ...
+##  $ LightActiveDistance     : num  6.06 4.71 3.91 2.83 5.04 ...
+##  $ SedentaryActiveDistance : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ VeryActiveMinutes       : int  25 21 30 29 36 38 42 50 28 19 ...
+##  $ FairlyActiveMinutes     : int  13 19 11 34 10 20 16 31 12 8 ...
+##  $ LightlyActiveMinutes    : int  328 217 181 209 221 164 233 264 205 211 ...
+##  $ SedentaryMinutes        : int  728 776 1218 726 773 539 1149 775 818 838 ...
+##  $ Calories                : int  1985 1797 1776 1745 1863 1728 1921 2035 1786 1775 ...
+
+
 # Sleep
 str(Sleep)
+
+## 'data.frame':    413 obs. of  5 variables:
+##  $ Id                : num  1.5e+09 1.5e+09 1.5e+09 1.5e+09 1.5e+09 ...
+##  $ SleepDay          : chr  "4/12/2016 12:00:00 AM" "4/13/2016 12:00:00 AM" "4/15/2016 12:00:00 AM" "4/16/2016 12:00:00 AM" ...
+##  $ TotalSleepRecords : int  1 2 1 2 1 1 1 1 1 1 ...
+##  $ TotalMinutesAsleep: int  327 384 412 340 700 304 360 325 361 430 ...
+##  $ TotalTimeInBed    : int  346 407 442 367 712 320 377 364 384 449 ...
+
+
 # Weight
 str(Weight)
+
+## 'data.frame':    67 obs. of  8 variables:
+##  $ Id            : num  1.50e+09 1.50e+09 1.93e+09 2.87e+09 2.87e+09 ...
+##  $ Date          : chr  "5/2/2016 11:59:59 PM" "5/3/2016 11:59:59 PM" "4/13/2016 1:08:52 AM" "4/21/2016 11:59:59 PM" ...
+##  $ WeightKg      : num  52.6 52.6 133.5 56.7 57.3 ...
+##  $ WeightPounds  : num  116 116 294 125 126 ...
+##  $ Fat           : int  22 NA NA NA NA 25 NA NA NA NA ...
+##  $ BMI           : num  22.6 22.6 47.5 21.5 21.7 ...
+##  $ IsManualReport: chr  "True" "True" "False" "True" ...
+##  $ LogId         : num  1.46e+12 1.46e+12 1.46e+12 1.46e+12 1.46e+12 ...
+
+
 # Intensities
 str(Intensities)
+
+## 'data.frame':    22099 obs. of  4 variables:
+##  $ Id              : num  1.5e+09 1.5e+09 1.5e+09 1.5e+09 1.5e+09 ...
+##  $ ActivityHour    : chr  "4/12/2016 12:00:00 AM" "4/12/2016 1:00:00 AM" "4/12/2016 2:00:00 AM" "4/12/2016 3:00:00 AM" ...
+##  $ TotalIntensity  : int  20 8 7 0 0 0 0 0 13 30 ...
+##  $ AverageIntensity: num  0.333 0.133 0.117 0 0 ...
 ```  
   
 ### CLEANING THE DATA  
@@ -200,6 +246,11 @@ Intensities_Hour_Avg <- Intensities_Hour_Avg %>%
 ```{r}
 ## Check
 str(Intensities_Hour_Avg)  
+
+## tibble [24 × 2] (S3: tbl_df/tbl/data.frame)
+##  $ Hour           : chr [1:24] "00:00:00" "01:00:00" "02:00:00" "03:00:00" ...
+##  $ Total_Intensity: num [1:24] 2.13 1.419 1.044 0.444 0.633 ...
+
 ```  
   
 --------------------------------------------------------------------------------  
@@ -232,6 +283,8 @@ library(mice)
 # Create viz to show where the missing data is
 md.pattern(Weight, plot = TRUE, rotate.names = TRUE) 
 ```
+![NA](https://user-images.githubusercontent.com/95106309/150654549-4e1d2d11-00f1-4cef-a93c-2a9d01968367.png)
+
 All 65 NA values are in the *Fat* column (65 out of 67 data points in the column). Since all of the NA values are in the *Fat* column, and make up 65 out of the 67 data points in that column, a proper analysis cannot be done with this column:
 ```{r, results="hide"}
 # Create new data frame without the "Fat" column
@@ -246,10 +299,13 @@ Identifying number of unique values in ID column in each data frame to confirm n
 ```{r Unique IDs, results="hide"}
 # Activity
 length(unique(Activity$ID))# 33 IDs
+
 # Sleep
 length(unique(Sleep$ID)) # 24 IDs
+
 # Weight
 length(unique(Weight$ID)) # 8 IDs
+
 # Intensities
 length(unique(Intensities$ID)) # 33 IDs
 ```  
@@ -261,8 +317,10 @@ A total of 33 unique IDs were identified; Activity:  33, Sleep: 24, Weight: 8, I
 ```{r Duplicates, results="hide"}
 # Activity
 sum(duplicated(Activity)) # 0 duplicates
+
 # Sleep
 sum(duplicated(Sleep)) # 3 duplicates
+
 # Intensities
 sum(duplicated(Intensities)) # 12, 351 duplicates
 ```
@@ -304,6 +362,49 @@ str(Daily_Data_Merged)
 Looking at summery stats on data:
 ```{r}
 summary(Daily_Data_Merged)
+
+##        ID                 Date                      Total_Steps   
+##  Min.   :1.504e+09   Min.   :2016-04-12 00:00:00   Min.   :   17  
+##  1st Qu.:3.977e+09   1st Qu.:2016-04-19 00:00:00   1st Qu.: 5189  
+##  Median :4.703e+09   Median :2016-04-27 00:00:00   Median : 8913  
+##  Mean   :4.995e+09   Mean   :2016-04-26 11:38:55   Mean   : 8515  
+##  3rd Qu.:6.962e+09   3rd Qu.:2016-05-04 00:00:00   3rd Qu.:11370  
+##  Max.   :8.792e+09   Max.   :2016-05-12 00:00:00   Max.   :22770  
+##  Total_Distance_km Tracker_Distance_km Logged_Activites_Distance_km
+##  Min.   : 0.010    Min.   : 0.010      Min.   :0.0000              
+##  1st Qu.: 3.592    1st Qu.: 3.592      1st Qu.:0.0000              
+##  Median : 6.270    Median : 6.270      Median :0.0000              
+##  Mean   : 6.012    Mean   : 6.007      Mean   :0.1089              
+##  3rd Qu.: 8.005    3rd Qu.: 7.950      3rd Qu.:0.0000              
+##  Max.   :17.540    Max.   :17.540      Max.   :4.0817              
+##  Very_Active_Distance_km Moderate_Active_Distance_km Light_Active_Distance_km
+##  Min.   : 0.000          Min.   :0.0000              Min.   :0.010           
+##  1st Qu.: 0.000          1st Qu.:0.0000              1st Qu.:2.540           
+##  Median : 0.570          Median :0.4200              Median :3.665           
+##  Mean   : 1.446          Mean   :0.7439              Mean   :3.791           
+##  3rd Qu.: 2.360          3rd Qu.:1.0375              3rd Qu.:4.918           
+##  Max.   :12.540          Max.   :6.4800              Max.   :9.480           
+##  Sedentary_Active_Distance_km Very_Active_min  Fairly_Active_min
+##  Min.   :0.0000000            Min.   :  0.00   Min.   :  0.00   
+##  1st Qu.:0.0000000            1st Qu.:  0.00   1st Qu.:  0.00   
+##  Median :0.0000000            Median :  9.00   Median : 11.00   
+##  Mean   :0.0009268            Mean   : 25.05   Mean   : 17.92   
+##  3rd Qu.:0.0000000            3rd Qu.: 38.00   3rd Qu.: 26.75   
+##  Max.   :0.1100000            Max.   :210.00   Max.   :143.00   
+##  Lightly_Active_min Sedentary_min       Calories    Total_Sleep_Records
+##  Min.   :  2.0      Min.   :   0.0   Min.   : 257   Min.   :1.00       
+##  1st Qu.:158.0      1st Qu.: 631.2   1st Qu.:1841   1st Qu.:1.00       
+##  Median :208.0      Median : 717.0   Median :2207   Median :1.00       
+##  Mean   :216.5      Mean   : 712.1   Mean   :2389   Mean   :1.12       
+##  3rd Qu.:263.0      3rd Qu.: 782.8   3rd Qu.:2920   3rd Qu.:1.00       
+##  Max.   :518.0      Max.   :1265.0   Max.   :4900   Max.   :3.00       
+##  Total_Min_Asleep Total_Min_In_Bed Total_Activity_Min
+##  Min.   : 58.0    Min.   : 61.0    Min.   :  2.0     
+##  1st Qu.:361.0    1st Qu.:403.8    1st Qu.:206.5     
+##  Median :432.5    Median :463.0    Median :263.5     
+##  Mean   :419.2    Mean   :458.5    Mean   :259.5     
+##  3rd Qu.:490.0    3rd Qu.:526.0    3rd Qu.:315.5     
+##  Max.   :796.0    Max.   :961.0    Max.   :540.0
 ```  
 Data description says the data set represents data between March 12, 206 to May 12, 2016, however, it only has data from April 12, 206 to May 12, 2016, which is one month less (or 50% of the data) than stated.  
   
@@ -348,6 +449,21 @@ Daily_Data_Merged %>%
          Total_Min_Asleep,
          Total_Min_In_Bed) %>% 
   summary()
+  
+##  Very_Active_min  Fairly_Active_min Lightly_Active_min Sedentary_min   
+##  Min.   :  0.00   Min.   :  0.00    Min.   :  2.0      Min.   :   0.0  
+##  1st Qu.:  0.00   1st Qu.:  0.00    1st Qu.:158.0      1st Qu.: 631.2  
+##  Median :  9.00   Median : 11.00    Median :208.0      Median : 717.0  
+##  Mean   : 25.05   Mean   : 17.92    Mean   :216.5      Mean   : 712.1  
+##  3rd Qu.: 38.00   3rd Qu.: 26.75    3rd Qu.:263.0      3rd Qu.: 782.8  
+##  Max.   :210.00   Max.   :143.00    Max.   :518.0      Max.   :1265.0  
+##  Total_Min_Asleep Total_Min_In_Bed
+##  Min.   : 58.0    Min.   : 61.0   
+##  1st Qu.:361.0    1st Qu.:403.8   
+##  Median :432.5    Median :463.0   
+##  Mean   :419.2    Mean   :458.5   
+##  3rd Qu.:490.0    3rd Qu.:526.0   
+##  Max.   :796.0    Max.   :961.0
 ```
 * A minimum sedentary time of zero minutes may suggest one or more users used the device only for active activities at least once
 * Looking at the maximum difference in time between being asleep and being in bed is a 2.75 hour difference, which can suggest poor sleep practices or illness
@@ -369,6 +485,28 @@ Daily_Data_Merged %>%
          Sedentary_Active_Distance_km,
          Calories) %>% 
   summary()
+  
+##   Total_Steps    Total_Distance_km Very_Active_Distance_km
+##  Min.   :   17   Min.   : 0.010    Min.   : 0.000         
+##  1st Qu.: 5189   1st Qu.: 3.592    1st Qu.: 0.000         
+##  Median : 8913   Median : 6.270    Median : 0.570         
+##  Mean   : 8515   Mean   : 6.012    Mean   : 1.446         
+##  3rd Qu.:11370   3rd Qu.: 8.005    3rd Qu.: 2.360         
+##  Max.   :22770   Max.   :17.540    Max.   :12.540         
+##  Moderate_Active_Distance_km Light_Active_Distance_km
+##  Min.   :0.0000              Min.   :0.010           
+##  1st Qu.:0.0000              1st Qu.:2.540           
+##  Median :0.4200              Median :3.665           
+##  Mean   :0.7439              Mean   :3.791           
+##  3rd Qu.:1.0375              3rd Qu.:4.918           
+##  Max.   :6.4800              Max.   :9.480           
+##  Sedentary_Active_Distance_km    Calories   
+##  Min.   :0.0000000            Min.   : 257  
+##  1st Qu.:0.0000000            1st Qu.:1841  
+##  Median :0.0000000            Median :2207  
+##  Mean   :0.0009268            Mean   :2389  
+##  3rd Qu.:0.0000000            3rd Qu.:2920  
+##  Max.   :0.1100000            Max.   :4900
 ```
 * Makes sense for super low (practically zero) for sedentary distance since it's stationary
 * Very active distance maximum of 12.5km may suggest at least one user has relatively good fitness levels, however, this may be a one off since the average is much lower at 1.45km
@@ -385,6 +523,7 @@ ggplot(data = Activity) +
   geom_point(mapping = aes(x=Total_Steps, y=Calories)) +
   labs(title="Daily Steps vs Daily Calories", x= "Steps", y= "Calories")
 ```  
+![Daily Steps vs Daily Calories](https://user-images.githubusercontent.com/95106309/150655611-665492c6-fd61-4d7d-94a8-c841248d37d9.png)
 
 * There is a positive correlation between, which makes sense when you walk you burn calories.
 * There are records of 0 steps with calories as high as almost 3,000, which can suggest that some users only used the device for stationary workouts  
@@ -398,6 +537,7 @@ ggplot(data = Daily_Data_Merged) +
   geom_point(mapping = aes(x = Total_Activity_Min, y = Calories)) +
   labs(title="Acivity Time vs Calories", x= "Activity Minutes", y= "Calories")
 ```  
+![Acivity Time vs Calories](https://user-images.githubusercontent.com/95106309/150655650-006b47dc-6a8a-43eb-99b1-2b254da70dc2.png)
 
 * There is a positive correlation, which makes sense because you burn more calories the longer an activity is  
 
@@ -410,6 +550,7 @@ ggplot(data=Daily_Data_Merged) +
   geom_point(mapping=aes(x=Total_Min_Asleep, y=Total_Min_In_Bed)) +
   labs(title="Time Slept vs Time in Bed", x= "Minutes Asleep", y= "Minutes In Bed")
 ```  
+![Time Slept vs Time in Bed](https://user-images.githubusercontent.com/95106309/150655663-e74eecdf-70c6-4e3d-893e-b12eaf71d00b.png)
 
 * There is positive correlation which makes sense since you will spend more time in bed awake than asleep  
 
@@ -422,6 +563,7 @@ ggplot(data=Daily_Data_Merged) +
   geom_point(mapping=aes(x=Total_Min_Asleep, y=Total_Activity_Min)) +
   labs(title="Time Slept vs Acivity Time", x= "Minutes Asleep", y= "Minutes of Activity")
 ```  
+![Time Slept vs Acivity Time](https://user-images.githubusercontent.com/95106309/150655669-ab96a973-5584-464a-bf8f-7a84c98a2d67.png)
 
 * There is no clear correlation here, however, it does look like those who do sleep more than 600 minutes (10 hrs) have lower activity time, which may be due to the less time in the day for activities
 * It does look like when people get between 400 (6.7 hrs) and 600 (10 hrs) of sleep have higher activity minutes  
@@ -435,6 +577,7 @@ ggplot(data=Daily_Data_Merged) +
   geom_point(mapping=aes(x=Total_Min_Asleep, y=Calories)) +
   labs(title="Time Slept vs Daily Calories", x= "Minutes Asleep", y= "Calories")
 ```  
+![Time Slept vs Daily Calories](https://user-images.githubusercontent.com/95106309/150655674-8030652f-cea7-4bbc-9596-58d4c68fdb28.png)
 
 * There's no correlation here, but there is something interesting here
 * There are records of sleep under 100 minutes that have over 2000 calories burned, which can suggest that some users only used the device for stationary workouts and don't use it for sleep  
@@ -448,6 +591,7 @@ ggplot(data=Daily_Data_Merged) +
   geom_smooth(mapping = aes(x = Total_Min_Asleep, y = Total_Steps)) +
   labs(title="Daily Step Count vs Time Slept", x= "Minutes Asleep", y= "Step Count")
 ```  
+![Daily Step Count vs Time Slept](https://user-images.githubusercontent.com/95106309/150655683-d7a0807f-c875-4e09-8f32-d42bb6432be7.png)
 
 * There are records of sleep over 600 minutes(10hrs) with decreasing step count, which can make sense because there's less time in the day on the feet  
 
@@ -460,6 +604,7 @@ ggplot(data=Intensities_Hour_Avg, aes(x=Hour, y=Total_Intensity)) +
   theme(axis.text.x = element_text(angle = 90)) +
   labs(title="Hour vs. Average Total Intensity", x="Hour", y="Avg Total Intensity")
 ```  
+![Hour vs  Average Total Intensity](https://user-images.githubusercontent.com/95106309/150655690-68588081-ed7f-4542-8a7d-a7cb622253d6.png)
 
 * We can see that the highest average total intensity occurs between 5pm and 7pm, and the lowest occurs between 11pm and 5am, which makes sense in terms of when most people sleep and work  
 
